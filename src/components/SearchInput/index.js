@@ -38,6 +38,10 @@ const SearchInput = styled(Input)`
     box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secundo},
       0 0 0 4px ${({ theme }) => theme.colors.terceiro};
   }
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export default SearchInput;

@@ -5,6 +5,7 @@ import fetchData from "../data/fetchData/fetchData";
 
 import Background from "../components/Background";
 import Wrapper from "../components/Wrapper";
+import ArrowVoltar from "../components/ArrowVoltar";
 import Header from "../components/Header";
 import ImageUser from "../components/ImageUser";
 import InfosUser from "../components/InfosUser";
@@ -45,12 +46,10 @@ const Perfl = () => {
     public_repos,
   } = userDados;
 
-  // console.log(userDados);
-  // console.log(userRepositorios);
-
   return (
     <Background>
       <Wrapper>
+        <ArrowVoltar href="/" />
         <Header>
           <ImageUser src={avatar_url} placeholder={name} />
           <InfosUser

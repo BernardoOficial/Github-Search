@@ -27,11 +27,15 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.terceiro};
     transform: translateY(-10px);
   }
-  
+
   &:disabled {
     background-color: ${({ theme }) => theme.colors.terceiro}77;
     transform: translateY(-10px);
     color: #ffffff;
+  }
+
+  @media (max-width: 400px) {
+    width: 100%;
   }
 `;
 

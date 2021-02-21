@@ -9,7 +9,15 @@ const Main = styled.main`
   row-gap: 20px;
   column-gap: 20px;
 
-  @media (max-width: 440px) {
+  @media (max-width: 1100px) {
+    grid-template-columns: auto auto auto;
+  }
+  
+  @media (max-width: 950px) {
+    grid-template-columns: auto auto;
+  }
+  
+  @media (max-width: 600px) {
     column-gap: 0px;
     grid-template-columns: auto;
   }

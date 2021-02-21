@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Header = styled.header`
   width: 100%;
+  margin-top: 20px;
 
   display: grid;
   grid-template-columns: 200px 2fr 4fr;

@@ -4,24 +4,34 @@ import { ReactComponent as Forks } from '../../assets/images/forks-icon.svg';
 
 const Lista = ({ className, repositorios }) => {
 
-    console.log(repositorios);
-
     return (
       <>
         {repositorios.map((item, index) => (
-          <section className={className} key={index}>
-            <div>
-              <h1>{item.name}</h1>
-              <p className="descricao">{item.description}</p>
-            </div>
+          <a style={{ textDecoration: 'none' }} href={`${item.html_url}`} target="_blank" key={index}>
+            <section className={className}>
+              <div>
+                <h1>{item.name}</h1>
+                <p className="descricao">
+                  {item.description || "Não possui descrição."}
+                </p>
+              </div>
 
-            <div className="info-projeto">
-              <p className="info-projeto__fork">Fork: {item.fork ? 'sim' : 'não'}</p>
-              <p className="info-projeto__forks"><Forks /> {item.forks}</p>
-              <p className="info-projeto__language"><Code /> {item.language}</p>
-              <p className="info-projeto__stars"><Star /> {item.stargazers_count}</p>
-            </div>
-          </section>
+              <div className="info-projeto">
+                <p className="info-projeto__fork">
+                  Fork: {item.fork ? "sim" : "não"}
+                </p>
+                <p className="info-projeto__forks">
+                  <Forks /> {item.forks}
+                </p>
+                <p className="info-projeto__language">
+                  <Code /> {item.language}
+                </p>
+                <p className="info-projeto__stars">
+                  <Star /> {item.stargazers_count}
+                </p>
+              </div>
+            </section>
+          </a>
         ))}
       </>
     );
@@ -32,12 +42,23 @@ const ListaRepositorios = styled(Lista)`
   height: 150px;
   padding: 15px;
 
-  background-color: #232324;
+  background-color: ${({ theme }) => theme.colors.quarta};
   color: ${({ theme }) => theme.colors.terceiro};
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  transition: 0.3s ease-out;
+
+  @media (max-width: 400px) {
+    height: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px -2px ${({ theme }) => theme.colors.quarta};
+  }
 
   h1 {
     font-size: 1.6rem;

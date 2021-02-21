@@ -22,6 +22,7 @@ const theme = {
     primeiro: "#100D02",
     secundo: "#F9BA0D",
     terceiro: "#ffffff",
+    quarta: '#232324',
     textoBranco: "#ffffff",
     textoPreto: "#444444",
     tituloBranco: "#ffffff",

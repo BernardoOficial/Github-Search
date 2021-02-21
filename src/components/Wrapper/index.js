@@ -10,6 +10,8 @@ const Wrapper = styled.section`
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    position: relative;
 `
 
 export default Wrapper;

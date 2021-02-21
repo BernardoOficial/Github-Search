@@ -37,7 +37,7 @@ const EstatisticasUser = styled(Estatisticas)`
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  gap: 10px;
+  gap: 15px;
 
   justify-content: center;
 
@@ -48,11 +48,11 @@ const EstatisticasUser = styled(Estatisticas)`
 
   div {
     width: 180px;
-    height: 80px;
+    height: 85px;
     background-color: ${({ theme }) => theme.colors.secundo};
     border-radius: ${({ theme }) => theme.borderRadius};
 
-    padding: 8px;
+    padding: 12px 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,6 +64,11 @@ const EstatisticasUser = styled(Estatisticas)`
     color: ${({ theme }) => theme.colors.textoPreto};
     position: relative;
     overflow: hidden;
+    transition: 0.3s ease-out;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
 
     &::before {
       content: "";
@@ -73,6 +78,16 @@ const EstatisticasUser = styled(Estatisticas)`
       width: 100%;
       height: 6px;
       background: ${({ theme }) => theme.colors.terceiro};
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: ${({ theme }) => theme.colors.secundo};
     }
 
     p {
