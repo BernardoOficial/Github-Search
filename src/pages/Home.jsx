@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Wrapper from '../components/Wrapper';
 import GithubImage from '../components/GithubImage';
@@ -8,7 +8,7 @@ import Formulario from '../components/Formulario';
 const Home = () => {
 
     return (
-      <Background>
+      <Background alignItems >
         <Wrapper>
           <GithubImage />
           <Formulario />

@@ -1,8 +1,6 @@
-const fetchUser = async (username) => {
+const fetchData = async (url) => {
     try {   
-        const response = await fetch(
-          `https://api.github.com/users/${username}`
-        );
+        const response = await fetch(url);
         const userDados = await response.json();
         return userDados;
     } catch (erro) {
@@ -10,4 +8,4 @@ const fetchUser = async (username) => {
     }
 }
 
-export default fetchUser;
+export default fetchData;

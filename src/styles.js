@@ -15,10 +15,6 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Nunito', sans-serif;
     }
-
-    h1 {
-        color: #ffffff;
-    }
 `;
 
 const theme = {
@@ -34,7 +30,4 @@ const theme = {
   borderRadius: "8px",
 };
 
-export {
-    GlobalStyle,
-    theme
-} 
+export { GlobalStyle, theme };

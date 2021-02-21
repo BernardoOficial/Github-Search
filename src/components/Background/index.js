@@ -8,7 +8,7 @@ const Background = styled.div`
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: ${({alignItems}) => alignItems ? 'center' : 'flex-start' }
 `
 
 export default Background;
