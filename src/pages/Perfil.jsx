@@ -20,9 +20,11 @@ const Perfl = () => {
   const { user } = useParams();
 
   const pegarDadosDoUsuario = async () => {
+
     const urlUser = `https://api.github.com/users/${user}`;
     const response = await fetchData(urlUser);
     setDadosUser(response);
+    
   };
 
   const pegarRepositoriosDoUsuario = async () => {
