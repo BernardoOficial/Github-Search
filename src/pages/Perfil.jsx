@@ -10,27 +10,45 @@ import Header from "../components/Header";
 import ImageUser from "../components/ImageUser";
 import InfosUser from "../components/InfosUser";
 import EstatisticasUser from "../components/EstatisticasUser";
+import Loading from "../components/Loading";
 
 import Main from "../components/Main";
 import ListaRepositorios from "../components/ListaRepositorios";
 
 const Perfl = () => {
+  const [estaCarregando, setEstaCarregando] = useState(false);
   const [userDados, setDadosUser] = useState([]);
   const [userRepositorios, setUserRepositorios] = useState([]);
   const { user } = useParams();
 
-  const pegarDadosDoUsuario = async () => {
-
+  const pegarDadosDoUsuario = () => {
     const urlUser = `https://api.github.com/users/${user}`;
-    const response = await fetchData(urlUser);
-    setDadosUser(response);
-    
+
+    setEstaCarregando(true);
+
+    fetchData(urlUser)
+      .then((response) => {
+
+        setTimeout(() => {
+          setEstaCarregando(false);
+          setDadosUser(response);
+        }, 1500)
+      })
   };
 
-  const pegarRepositoriosDoUsuario = async () => {
+  const pegarRepositoriosDoUsuario = () => {
     const urlUserRepositorios = `https://api.github.com/users/${user}/repos`;
-    const response = await fetchData(urlUserRepositorios);
-    setUserRepositorios(response);
+
+    setEstaCarregando(true)    ;
+
+    fetchData(urlUserRepositorios)
+      .then((response) => {
+
+        setTimeout(() => {
+          setEstaCarregando(false);
+          setUserRepositorios(response);
+        }, 1500)
+      })
   };
 
   useEffect(pegarDadosDoUsuario, []);
@@ -51,24 +69,31 @@ const Perfl = () => {
   return (
     <Background>
       <Wrapper>
-        <ArrowVoltar href="/" />
-        <Header>
-          <ImageUser src={avatar_url} placeholder={name} />
-          <InfosUser
-            nome={name}
-            localizacao={location || estadoInicial}
-            bio={bio || estadoInicial}
-            empresa={company || estadoInicial}
-          />
-          <EstatisticasUser
-            seguidores={followers}
-            seguindo={following}
-            totalRepositorios={public_repos}
-          />
-        </Header>
-        <Main>
-          <ListaRepositorios repositorios={userRepositorios} />
-        </Main>
+        {estaCarregando ? (
+          <Loading />
+        ) : (
+          <>
+            
+            <ArrowVoltar href="/" />
+            <Header>
+              <ImageUser src={avatar_url} placeholder={name} />
+              <InfosUser
+                nome={name}
+                localizacao={location || estadoInicial}
+                bio={bio || estadoInicial}
+                empresa={company || estadoInicial}
+              />
+              <EstatisticasUser
+                seguidores={followers}
+                seguindo={following}
+                totalRepositorios={public_repos}
+              />
+            </Header>
+            <Main>
+              <ListaRepositorios repositorios={userRepositorios} />
+            </Main>
+          </>
+        )}
       </Wrapper>
     </Background>
   );

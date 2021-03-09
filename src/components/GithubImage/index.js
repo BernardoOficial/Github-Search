@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import styled from 'styled-components';
 import image from '../../assets/images/github-search.svg';
 

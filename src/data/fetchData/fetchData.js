@@ -4,7 +4,7 @@ const fetchData = async (url) => {
     const userDados = await response.json();
 
     if(!response.ok) {
-        throw new Error("Requisição com erro: username não encontrado.");
+        return new Error("Requisição com erro: username não encontrado.");
     }
 
     return userDados;
