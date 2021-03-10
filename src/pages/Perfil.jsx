@@ -34,12 +34,15 @@ const Perfl = () => {
           setDadosUser(response);
         }, 1500)
       })
+      .catch((erro) => {
+        console.log(erro);
+      })
   };
 
   const pegarRepositoriosDoUsuario = () => {
     const urlUserRepositorios = `https://api.github.com/users/${user}/repos`;
 
-    setEstaCarregando(true)    ;
+    setEstaCarregando(true);
 
     fetchData(urlUserRepositorios)
       .then((response) => {
