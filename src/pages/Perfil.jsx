@@ -24,13 +24,10 @@ const Perfl = () => {
   const pegarDadosDoUsuario = () => {
     const urlUser = `https://api.github.com/users/${user}`;
 
-    setEstaCarregando(true);
-
     fetchData(urlUser)
       .then((response) => {
 
         setTimeout(() => {
-          setEstaCarregando(false);
           setDadosUser(response);
         }, 1500)
       })

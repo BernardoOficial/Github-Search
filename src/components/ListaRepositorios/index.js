@@ -7,8 +7,15 @@ const Lista = ({ className, repositorios }) => {
     return (
       <>
         {repositorios.map((item, index) => (
-          <a style={{ textDecoration: 'none' }} href={`${item.html_url}`} target="_blank" key={index}>
-            <section className={className}>
+          <a
+            className={className}
+            style={{ textDecoration: "none" }}
+            href={`${item.html_url}`}
+            target="_blank"
+            style={{ animationDelay: `${0.1 * index}s` }}
+            key={index}
+          >
+            <section>
               <div>
                 <h1>{item.name}</h1>
                 <p className="descricao">
@@ -38,26 +45,44 @@ const Lista = ({ className, repositorios }) => {
 }
 
 const ListaRepositorios = styled(Lista)`
-  width: 100%;
-  height: 150px;
-  padding: 15px;
+  animation: showAnimation 1.5s linear forwards;
+  text-decoration: none;
+  visibility: hidden;
 
-  background-color: ${({ theme }) => theme.colors.quarta};
-  color: ${({ theme }) => theme.colors.terceiro};
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  transition: 0.3s ease-out;
-
-  @media (max-width: 400px) {
-    height: 100%;
+  @keyframes showAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px -2px ${({ theme }) => theme.colors.quarta};
+  section {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+
+    background-color: ${({ theme }) => theme.colors.quarta};
+    color: ${({ theme }) => theme.colors.terceiro};
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: 0.3s ease-out;
+
+    @media (max-width: 400px) {
+      height: 100%;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px -2px ${({ theme }) => theme.colors.quarta};
+    }
   }
 
   h1 {

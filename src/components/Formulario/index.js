@@ -52,6 +52,19 @@ const Formulario = styled(Form)`
   align-items: center;
 
   width: 100%;
+
+  animation: show 1s linear forwards;
+
+  @keyframes show {
+    from {
+      opacity: 0.5;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
 `;
 
 export default Formulario;
